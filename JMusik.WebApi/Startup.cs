@@ -1,23 +1,14 @@
 using AutoMapper;
 using JMusik.Data;
-using JMusik.Data.Contratos;
-using JMusik.Data.Interfaces;
-using JMusik.Data.Repositorios;
-using JMusik.Models;
-using JMusik.WebApi.Services;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+using JMusik.WebApi.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using Microsoft.IdentityModel.Tokens;
 using Serilog;
-using System;
-using System.Text;
 
 namespace JMusik.WebApi
 {
@@ -41,80 +32,27 @@ namespace JMusik.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             // Permitimos a la aplicación acceder a los controladores y actions
-            services.AddControllers();
+            // AddXmlDataContractSerializerFormatters nos permite comunicacion mediante XML
+            // El Web Api tendra la disponibilidad de consulta de contenido en fomrato json, xml
+            services.AddControllers(config =>
+            {
+                config.ReturnHttpNotAcceptable = true; // va a regresar un codigo de error 406, indicando que el tipo de formato indicado por el cliente no esta aceptado por la web api
+            }).AddXmlDataContractSerializerFormatters();
 
             // Habilitando el automaper en el proyecto
             services.AddAutoMapper(typeof(Startup));
 
             // Cuando ya tenemos acceso a la interfaz de IConfiguration, añadimos la referencia del dbcontext para poder usar el db context en cualquier parte de la app
-            services.AddDbContext<TiendaDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("TiendaDb"))
-            );
+            services.AddDbContext<TiendaDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("TiendaDb")));
 
-            // Scoped significa que el servicio será creado y liberado por cada petición del cliente
-            services.AddScoped<IProductoRepositorio, ProductoRepositorio>();
+            ///// ------------Se usa la clase ServiceExtension donde estan todas las declaraciones de los servicios como buena practica---------- /////
 
-            services.AddScoped<IRepositorioGenerico<Perfil>, PerfilRepositorio>();
-
-            services.AddScoped<IOrdenRepositorio, OrdenRepositorio>();
-
-            services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
-
-            // Implementacion de usuarios con PasswordHasher, nos permite generar la encriptacion de los campos
-            services.AddScoped<IPasswordHasher<Usuario>, PasswordHasher<Usuario>>();
-
-            // Usamos singleton por que queremos solo una instancia para todo el ciclo de vida de nuestra aplicación
-            services.AddSingleton<TokenService>();
-
-            // Accedemos a la sección JwtSettings del archivo appsettings.json
-            var jwtSettings = Configuration.GetSection("JwtSettings");
-
-            // Obtenemos la clave secreta guardada en JwtSettings:SecretKey
-            string secretKey = jwtSettings.GetValue<string>("SecretKey");
-
-            // Obtenemos el tiempo de vida en minutos del Jwt guardada en JwtSettings:MinutesToExpiration
-            int minutes = jwtSettings.GetValue<int>("MinutesToExpiration");
-
-            // Obtenemos el valor del emisor del token en JwtSettings:Issuer
-            string issuer = jwtSettings.GetValue<string>("Issuer");
-
-            // Obtenemos el valor de la audiencia a la que está destinado el Jwt en JwtSettings:Audience
-            string audience = jwtSettings.GetValue<string>("Audience");
-
-            var key = Encoding.ASCII.GetBytes(secretKey);
-
-            // Generando configuracion de jwt
-            services.AddAuthentication(x =>
-            {
-                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(x =>
-            {
-                x.RequireHttpsMetadata = false; // debe ser true cuando lo publiquemos en producción, por que en prod debe ser https 
-                x.SaveToken = true;
-                x.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = true,
-                    ValidIssuer = issuer,
-                    ValidateAudience = true,
-                    ValidAudience = audience,
-                    ValidateLifetime = true,
-                    ClockSkew = TimeSpan.FromMinutes(minutes)
-                };
-            });
+            services.ConfigureDependencies();
 
             // Debido a que vamos a aceeder a la api desde diferentes aplicaciones, debemos habilitar cors mediante una politica
-            services.AddCors(options =>
-                {
-                    options.AddPolicy("CorsPolicy",
-                        builder => builder.AllowAnyOrigin()
-                        .AllowAnyMethod()
-                        .AllowAnyHeader()
-                    );
-                }
-            );
+            services.ConfigureCors();
+
+            services.ConfigureJWT(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

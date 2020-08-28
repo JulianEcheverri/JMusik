@@ -1,0 +1,627 @@
+{
+  "info": {
+    "_postman_id": "9230fa3f-e2d2-43af-a822-c82505a9af57",
+    "name": "JMusik JWT",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Perfiles",
+      "item": [
+        {
+          "name": "PerfilesGetById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}perfiles/1",
+              "host": [
+                "{{urlApi}}perfiles"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Obtener un perfil dado su identificador"
+          },
+          "response": []
+        },
+        {
+          "name": "PerfilesGet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}perfiles",
+              "host": [
+                "{{urlApi}}perfiles"
+              ]
+            },
+            "description": "Obtener una lista de perfiles"
+          },
+          "response": []
+        },
+        {
+          "name": "PerfilesPost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"id\":0,\n\t\"nombre\":\"Invitado\"\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}perfiles",
+              "host": [
+                "{{urlApi}}perfiles"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PerfilesPut",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"id\":5,\n\t\"nombre\":\"INVITADO\"\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}perfiles/5",
+              "host": [
+                "{{urlApi}}perfiles"
+              ],
+              "path": [
+                "5"
+              ]
+            },
+            "description": "Actualiza un Perfil"
+          },
+          "response": []
+        },
+        {
+          "name": "PerfilesDelete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}perfiles/5",
+              "host": [
+                "{{urlApi}}perfiles"
+              ],
+              "path": [
+                "5"
+              ]
+            },
+            "description": "Elimina un Perfil"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Productos",
+      "item": [
+        {
+          "name": "ProductoById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}productos/1",
+              "host": [
+                "{{urlApi}}productos"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Obtiene un producto con base en su Identificador"
+          },
+          "response": []
+        },
+        {
+          "name": "ProductosGet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}productos",
+              "host": [
+                "{{urlApi}}productos"
+              ]
+            },
+            "description": "Obtiene todos los productos"
+          },
+          "response": []
+        },
+        {
+          "name": "ProductosPost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"id\": 0,\n    \"nombre\": \"Guitarra Eléctrica Framus Devin Townsend Signature XI\",\n    \"precio\": 40000\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}productos",
+              "host": [
+                "{{urlApi}}productos"
+              ]
+            },
+            "description": "Agrega un producto"
+          },
+          "response": []
+        },
+        {
+          "name": "ProductosPut",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"nombre\": \"Guitarra Eléctrica PRS SE Custom X\",\n    \"precio\": 25000\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}productos/1",
+              "host": [
+                "{{urlApi}}productos"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Actualiza un producto"
+          },
+          "response": []
+        },
+        {
+          "name": "ProductosDelete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}productos/14",
+              "host": [
+                "{{urlApi}}productos"
+              ],
+              "path": [
+                "14"
+              ]
+            },
+            "description": "Eliminar un producto"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "UsuarioById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}usuarios/1",
+              "host": [
+                "{{urlApi}}usuarios"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Obtiene un usuario con base en su Identificador"
+          },
+          "response": []
+        },
+        {
+          "name": "UsuariosGet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}usuarios",
+              "host": [
+                "{{urlApi}}usuarios"
+              ]
+            },
+            "description": "Obtiene todos los usuarios"
+          },
+          "response": []
+        },
+        {
+          "name": "UsuariosPost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"id\": 0,\n    \"nombre\": \"Alberto\",\n    \"apellidos\": \"Martínez\",\n    \"email\":\"albertomartinez@correo.com\",\n    \"username\":\"amartinez\",\n    \"password\":\"123456\",\n    \"perfilId\":2\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}usuarios",
+              "host": [
+                "{{urlApi}}usuarios"
+              ]
+            },
+            "description": "Agrega un usuario"
+          },
+          "response": []
+        },
+        {
+          "name": "UsuariosPut",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"id\": 1,\n    \"nombre\": \"Administrador\",\n    \"apellidos\": \"Administrador X3A\",\n    \"email\":\"administradorx3a@correo.com\"\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}usuarios/1",
+              "host": [
+                "{{urlApi}}usuarios"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Actualiza un usuario, aunque en este método no se actualiza su contraseña."
+          },
+          "response": []
+        },
+        {
+          "name": "UsuariosDelete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}usuarios/11",
+              "host": [
+                "{{urlApi}}usuarios"
+              ],
+              "path": [
+                "11"
+              ]
+            },
+            "description": "Eliminar un usuario"
+          },
+          "response": []
+        },
+        {
+          "name": "UsuarioCambiarContrasena",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}usuarios/cambiarcontrasena",
+              "host": [
+                "{{urlApi}}usuarios"
+              ],
+              "path": [
+                "cambiarcontrasena"
+              ]
+            },
+            "description": "Cambiar la contraseña del usuario"
+          },
+          "response": []
+        },
+        {
+          "name": "UsuarioValidarCredenciales",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}usuarios/validarusuario",
+              "host": [
+                "{{urlApi}}usuarios"
+              ],
+              "path": [
+                "validarusuario"
+              ]
+            },
+            "description": "Cambiar la contraseña del usuario"
+          },
+          "response": []
+        },
+        {
+          "name": "UsuarioCambiarPerfil",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 1,\n    \"perfilId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}usuarios/cambiarperfil",
+              "host": [
+                "{{urlApi}}usuarios"
+              ],
+              "path": [
+                "cambiarperfil"
+              ]
+            },
+            "description": "Cambia el perfil del usuario"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Ordenes",
+      "item": [
+        {
+          "name": "OrdenById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}ordenes/1",
+              "host": [
+                "{{urlApi}}ordenes"
+              ],
+              "path": [
+                "1"
+              ]
+            },
+            "description": "Obtiene una orden con base en su Identificador"
+          },
+          "response": []
+        },
+        {
+          "name": "OrdenDetallesById",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}ordenes/1/detalles",
+              "host": [
+                "{{urlApi}}ordenes"
+              ],
+              "path": [
+                "1",
+                "detalles"
+              ]
+            },
+            "description": "Obtiene una orden con sus detalles con base en su Identificador"
+          },
+          "response": []
+        },
+        {
+          "name": "OrdenesGet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}ordenes",
+              "host": [
+                "{{urlApi}}ordenes"
+              ]
+            },
+            "description": "Obtiene todas las órdenes"
+          },
+          "response": []
+        },
+        {
+          "name": "OrdenesDetallesGet",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}ordenes/detalles",
+              "host": [
+                "{{urlApi}}ordenes"
+              ],
+              "path": [
+                "detalles"
+              ]
+            },
+            "description": "Obtiene todos las órdenes con detalles"
+          },
+          "response": []
+        },
+        {
+          "name": "OrdenesPost",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 0,\n    \"cantidadArticulos\": 2,\n    \"importe\": 30000,\n    \"usuarioId\": 1,\n    \"detalleOrden\": [\n        {\n            \"productoId\": 1,\n            \"producto\": \"Guitarra Eléctrica PRS SE Custom X\",\n            \"cantidad\": 1,\n            \"precioUnitario\": 15000,\n            \"total\": 15000\n        },\n        {\n            \"productoId\": 3,\n            \"producto\": \"Guitarra Eléctrica Ibanez 550G\",\n            \"cantidad\": 1,\n            \"precioUnitario\": 15000,\n            \"total\": 15000\n        }\n    ]\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}ordenes",
+              "host": [
+                "{{urlApi}}ordenes"
+              ]
+            },
+            "description": "Agrega una orden"
+          },
+          "response": []
+        },
+        {
+          "name": "OrdenesDelete",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{urlApi}}ordenes/3",
+              "host": [
+                "{{urlApi}}ordenes"
+              ],
+              "path": [
+                "3"
+              ]
+            },
+            "description": "Eliminar una orden"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sesion",
+      "item": [
+        {
+          "name": "LoginJWT",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"username\":\"admin\",\n\t\"password\":\"admin\"\n}"
+            },
+            "url": {
+              "raw": "{{urlApi}}sesion/login/",
+              "host": [
+                "{{urlApi}}sesion"
+              ],
+              "path": [
+                "login",
+                ""
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{token}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "8f71cb23-05b6-4486-affc-be1113035a02",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "655d9f7e-aacc-4a4b-a1dd-3666d2a299eb",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "c45246bd-b4c9-4cb0-b30a-120ac52463c8",
+      "key": "urlApi",
+      "value": "https://localhost:5001/api/",
+      "type": "string"
+    },
+    {
+      "id": "047c6919-957d-4643-b5bb-15a73f754150",
+      "key": "token",
+      "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1lIjoiYWRtaW4iLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJqaW1teWphdmllckBjb3JyZW8uY29tIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW5pc3RyYWRvciIsIm5iZiI6MTU1OTk1OTU2MiwiZXhwIjoxNTU5OTYwMTYyLCJpc3MiOiJodHRwczovL2xvY2FsaG9zdDo1MDAxLyIsImF1ZCI6IkpNdXNpa1VzdWFyaW9zIn0.8deMbykZYX3QF-bJFFLWqHUs7J4o0i2sWcdXrsCXpZQ",
+      "type": "string"
+    }
+  ]
+}

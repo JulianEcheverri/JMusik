@@ -21,8 +21,8 @@ namespace JMusik.WebApi.Controllers
 
         public UsuariosController(IUsuarioRepositorio usuarioRepositorio, IMapper mapper)
         {
-           _usuarioRepositorio = usuarioRepositorio;
-           _mapper = mapper;
+            _usuarioRepositorio = usuarioRepositorio;
+            _mapper = mapper;
         }
 
         //// GET: api/usuarios
@@ -101,7 +101,7 @@ namespace JMusik.WebApi.Controllers
             try
             {
                 bool resultado = await _usuarioRepositorio.Eliminar(id);
-                
+
                 if (!resultado) return BadRequest();
                 return NoContent();
             }
@@ -122,9 +122,9 @@ namespace JMusik.WebApi.Controllers
             {
                 Usuario usuario = _mapper.Map<Usuario>(usuarioContrasenaDto);
                 bool resultado = await _usuarioRepositorio.CambiarContrasena(usuario);
-                
+
                 if (!resultado) return BadRequest();
-                
+
                 return NoContent();
             }
             catch (Exception ex)
@@ -146,7 +146,7 @@ namespace JMusik.WebApi.Controllers
                 bool resultado = await _usuarioRepositorio.CambiarPerfil(usuario);
 
                 if (!resultado) return BadRequest();
-                
+
                 return NoContent();
             }
             catch (Exception ex)
@@ -168,7 +168,7 @@ namespace JMusik.WebApi.Controllers
                 bool resultado = await _usuarioRepositorio.ValidarContrasena(usuario);
 
                 if (!resultado) return BadRequest();
-                
+
                 return Ok();
             }
             catch (Exception ex)

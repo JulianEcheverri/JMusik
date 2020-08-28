@@ -94,5 +94,18 @@ namespace JMusik.Data.Repositorios
                 .OrderBy(u => u.Nombre)
                 .ToListAsync();
         }
+
+        public async Task<(int totalRegistros, IEnumerable<Producto> registros)> ObtenerPaginasProductosAsync(int paginaActual, int registrosPorPagina)
+        {
+            int totalDeRegistros = await _contexto.Productos.Where(x => x.Estatus == EstatusProducto.Activo).CountAsync();
+
+            List<Producto> registros = await _contexto.Productos
+                .Where(x => x.Estatus == EstatusProducto.Activo)
+                .Skip((paginaActual - 1) * registrosPorPagina)
+                .Take(registrosPorPagina)
+                .ToListAsync();
+
+            return (totalDeRegistros, registros);
+        }
     }
 }

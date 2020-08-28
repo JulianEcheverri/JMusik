@@ -35,7 +35,7 @@ namespace JMusik.WebApi.Controllers
             var (resultado, usuario) = await _usuarioRepositorio.ValidarDatosLogin(datosLoginUsuario);
 
             if (!resultado) return BadRequest("Usuario/Contraseña Inválidos.");
-            
+
             return _tokenService.GenerarToken(usuario);
         }
     }
